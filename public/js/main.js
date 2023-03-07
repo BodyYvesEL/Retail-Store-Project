@@ -1,4 +1,4 @@
-// -----> GLOBAL
+
 
 const products = [];
 const cartItems = [];
@@ -41,7 +41,7 @@ const VEGETABLE = [
 
 // -----> HTML
 
-function HTMLFruitProduct(con) {
+function HTMLfruitProduct(con) {
     let URL = `../img/fruits/fruit${con}.jpeg`;
     let btn = `btnFruit${con}`;
     return `
@@ -187,6 +187,55 @@ function cart2 (name, price, url, con, btncart) {
 }
 
 
+const Products = JSON.parse(localStorage.getItem("cart")) || [];
+
+(() => {
+    for (let index = 1; index <= 6; index++) {
+        fruitDIV.innerHTML += `${HTMLfruitProduct(index)}`;
+    }
+    for (let index = 1; index <= 3; index++) {
+        juiceDIV.innerHTML += `${HTMLjuiceProduct(index)}`;
+        vegetableDIV.innerHTML += `${HTMLvegetableProduct(index)}`;
+    }
+    cart_n.innerHTML = `[${products.length}]`;
+})();
+
+
+
+
+/*
+
+(() => {
+    try {
+        for (let index = 1; index <= 6; index++) {
+            fruitDIV.innerHTML += `${HTMLfruitProduct(index)}`;
+        }
+
+        for (let index = 1; index <= 3; index++) {
+            const juiceProduct = HTMLjuiceProduct(index);
+            const vegetableProduct = HTMLvegetableProduct(index);
+            
+            if (juiceProduct) {
+                juiceDIV.innerHTML += `${juiceProduct}`;
+            }
+            
+            if (vegetableProduct) {
+                vegetableDIV.innerHTML += `${vegetableProduct}`;
+            }
+        }
+
+        if (localStorage.getItem("cart")) {
+            const products = JSON.parse(localStorage.getItem("cart"));
+            cart_n.innerHTML = `[${products.length}]`;
+        }
+    } catch (error) {
+        console.error(error);
+    }
+})();
+
+
+
+
 (() => {
     for (let index = 1; index <= 6; index++) {
         fruitDIV.innerHTML += `${HTMLfruitProduct(index)}`;
@@ -198,7 +247,9 @@ function cart2 (name, price, url, con, btncart) {
     if (localStorage.getItem("cart") == null) {
 
     } else {
-        product = JSON.parse(localStorage.getItem("cart"));
-        cart_n.innerHTML = `[${product.length}]`;
+        products = JSON.parse(localStorage.getItem("cart"));
+        cart_n.innerHTML = `[${products.length}]`;
     }
 })();
+
+*/
