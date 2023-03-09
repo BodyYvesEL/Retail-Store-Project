@@ -1,6 +1,6 @@
 
 
-const products = [];
+let products = [];
 const cartItems = [];
 const cart_n = document.getElementById('cart_n');
 
@@ -20,23 +20,21 @@ const FRUIT = [
     {name: 'Rambutan', price: 1},
     {name: 'Logan', price: 1},
     {name: 'Jackfruit', price: 1},
-    {name: 'Pomelo', price: 1}
+    
 ];
 
 const JUICE = [
     {name: 'juice #1', price: 10},
     {name: 'juice #2', price: 11},
     {name: 'juice #3', price: 12},
-    {name: 'juice #4', price: 13},
-    {name: 'juice #5', price: 14},
+    
 ];
 
 const VEGETABLE = [
     {name: 'vegetable #1', price: 10},
     {name: 'vegetable #2', price: 12},
     {name: 'vegetable #3', price: 14},
-    {name: 'vegetable #4', price: 15},
-    {name: 'vegetable #5', price: 17},
+    
 ];
 
 // -----> HTML
@@ -47,7 +45,7 @@ function HTMLfruitProduct(con) {
     return `
         <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
-                <img clas="card-img-top" style="height: 16rem;" src="${URL}" alt="Card imaage cap">
+                <img class="card-img-top" style="height: 16rem;" src="${URL}" alt="Card imaage cap">
                 <div class="card-body">
                     <i style="color:orange;" class="fa fa-star" ></i>
                     <i style="color:orange;" class="fa fa-star" ></i>
@@ -65,16 +63,17 @@ function HTMLfruitProduct(con) {
                     </div>
                 </div>
             </div>
-        </div> `
+        </div> 
+    `
 }
 
 function HTMLjuiceProduct(con) {
-    let URL = `../img/juice/juice${con}.jpeg`;
-    let btn = `btnFruit${con}`;
+    let URL = `img/juice/juice${con}.jpeg`;
+    let btn = `btnJuice${con}`;
     return `
         <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
-                <img clas="card-img-top" style="height: 16rem;" src="${URL}" alt="Card imaage cap">
+                <img class="card-img-top" style="height: 16rem;" src="${URL}" alt="Card imaage cap">
                 <div class="card-body">
                     <i style="color:orange;" class="fa fa-star" ></i>
                     <i style="color:orange;" class="fa fa-star" ></i>
@@ -85,23 +84,24 @@ function HTMLjuiceProduct(con) {
                     <p class="card-text">Price: ${JUICE[con-1].price}.00</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                            <button type="button" onClick="cart2('${JUICE[con-1].name}', '${JUICE[con-1].price}', '${URL}', '${con}', '${btn}')" class="btn btn-sm btn-outline-secondary"><a style="color: inherit;" href="/cart">Buy</a></button>
+                            <button type="button" onClick="cart2('${JUICE[con-1].name}', '${JUICE[con-1].price}', '${URL}', '${con}', '${btn}')" class="btn btn-sm btn-outline-secondary"><a href="/cart" style="color:inherit;">Buy</a></button>
                             <button id="${btn}" type="button" onclick="cart('${JUICE[con-1].name}', '${JUICE[con-1].price}', '${URL}', '${con}', '${btn}')" class="btn btn-sm btn-outline-secondary" >Add to cart</button>
                         </div>
                         <small class="text-muted">Free Delivery</small>
                     </div>
                 </div>
             </div>
-        </div> `
+        </div> 
+    `
 }
 
 function HTMLvegetableProduct(con) {
-    let URL = `../img/vegetables/vegetable${con}.jpeg`;
-    let btn = `btnFruit${con}`;
+    let URL = `img/vegetable/vegetable${con}.jpeg`;
+    let btn = `btnVegetable${con}`;
     return `
         <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
-                <img clas="card-img-top" style="height: 16rem;" src="${URL}" alt="Card imaage cap">
+                <img class="card-img-top" style="height: 16rem;" src="${URL}" alt="Card imaage cap">
                 <div class="card-body">
                     <i style="color:orange;" class="fa fa-star" ></i>
                     <i style="color:orange;" class="fa fa-star" ></i>
@@ -112,14 +112,15 @@ function HTMLvegetableProduct(con) {
                     <p class="card-text">Price: ${VEGETABLE[con-1].price}.00</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                            <button type="button" onClick="cart2('${VEGETABLE[con-1].name}', '${VEGETABLE[con-1].price}', '${URL}', '${con}', '${btn}')" class="btn btn-sm btn-outline-secondary"><a style="color: inherit;" href="/cart">Buy</a></button>
+                            <button type="button" onClick="cart2('${VEGETABLE[con-1].name}', '${VEGETABLE[con-1].price}', '${URL}', '${con}', '${btn}')" class="btn btn-sm btn-outline-secondary"><a href="/cart" style="color:inherit;">Buy</a></button>
                             <button id="${btn}" type="button" onclick="cart('${VEGETABLE[con-1].name}', '${VEGETABLE[con-1].price}', '${URL}', '${con}', '${btn}')" class="btn btn-sm btn-outline-secondary" >Add to cart</button>
                         </div>
                         <small class="text-muted">Free Delivery</small>
                     </div>
                 </div>
             </div>
-        </div> `
+        </div> 
+    `
 }
 
 // -----> ANIMATION
@@ -148,7 +149,7 @@ function cart (name, price, url, con, btncart) {
     }
 
     cartItems.push(item);
-    const storage = JSON.parse(localStorage.getItem('cart'));
+    let storage = JSON.parse(localStorage.getItem('cart'));
     if (storage == null) {
         products.push(item);
         localStorage.setItem('cart', JSON.stringify(products));
@@ -171,7 +172,7 @@ function cart2 (name, price, url, con, btncart) {
     }
 
     cartItems.push(item);
-    const storage = JSON.parse(localStorage.getItem('cart'));
+    let storage = JSON.parse(localStorage.getItem('cart'));
     if (storage == null) {
         products.push(item);
         localStorage.setItem('cart', JSON.stringify(products));
@@ -183,8 +184,25 @@ function cart2 (name, price, url, con, btncart) {
     products = JSON.parse(localStorage.getItem('cart'));
     cart_n.innerHTML = `[${products.length}]`;
     document.getElementById(btncart).style.display = "none";
-    animation();
+    //animation();
 }
+
+
+
+const Products = JSON.parse(localStorage.getItem("cart")) || [];
+
+(() => {
+    for (let index = 1; index <= 6; index++) {
+        fruitDIV.innerHTML += `${HTMLfruitProduct(index)}`;
+    }
+    for (let index = 1; index <= 3; index++) {
+        juiceDIV.innerHTML+= `${HTMLjuiceProduct(index)}`;
+        vegetableDIV.innerHTML+= `${HTMLvegetableProduct(index)}`;
+    }
+    cart_n.innerHTML = `[${products.length}]`;
+})();
+
+/*
 
 
 const Products = JSON.parse(localStorage.getItem("cart")) || [];
@@ -199,6 +217,7 @@ const Products = JSON.parse(localStorage.getItem("cart")) || [];
     }
     cart_n.innerHTML = `[${products.length}]`;
 })();
+
 
 
 
@@ -232,6 +251,8 @@ const Products = JSON.parse(localStorage.getItem("cart")) || [];
         console.error(error);
     }
 })();
+
+
 
 
 

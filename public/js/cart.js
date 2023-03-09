@@ -44,15 +44,19 @@ function clean() {
     document.getElementById("btnClean").style.display="none";
 }
 
+
+
+
 (() => {
     for (let index = 0; index < products.length; index++) {
         table.innerHTML += tableHTML(index);
-        total = total+parseInt(products[index].price);
+        total = total + parseInt(products[index].price);
+        
     
         
     }
 
-    table.innerHTML = `
+    table.innerHTML+= `
         <tr>
             <th scope ="col"></th>
             <th scope ="col"></th>
@@ -89,7 +93,7 @@ const form = document.getElementById('form1');
 document.getElementById('submitbtn').addEventListener('click', () => {
     localStorage.clear();
     setTimeout(() => {
-        SubmitEvent();
+        sub();
     }, 5000);
 });
 function sub() {

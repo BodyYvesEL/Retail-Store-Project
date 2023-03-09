@@ -18,9 +18,13 @@
   },
   "homepage": "https://github.com/BodyYvesEL/Retail-Store-Project#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
     "express-handlebars": "^7.0.1",
-    "mongoose": "^7.0.1"
+    "express-session": "^1.17.3",
+    "mongoose": "^7.0.1",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
   }
 }
